@@ -15,6 +15,7 @@
 <![endif]-->
 </head>
 <body>
+    
 	<div id="header">
 		<ul>
 	
@@ -37,6 +38,7 @@
                         if (isset($_COOKIE['type'])) {
                             if ($_COOKIE['type'] == 'admin') {
                                 echo '<li><a href="calendar.php">Calendar</a></li>';
+                                echo '<li><a href="#" onclick="openFormPopup()">Open Chat</a></li>';
                             } elseif ($_COOKIE['type'] == 'customer') {
                                 echo '<li><a href="products.php">Products</a></li>';
                                 echo '<li><a href="cart.php">Cart</a></li>';
@@ -52,6 +54,7 @@
 
 
     <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+    
 
 
 
@@ -202,3 +205,16 @@
             mysqli_free_result($userResult);
             mysqli_close($dlink);
             ?>
+
+        </div>
+        <div id="popup-container" class="modal-container" style="display: none;">
+        <div id="popup-window" class="modal-content">
+            <button type="button" class="close" onclick="closeFormPopup()">&times;</button>
+            <div id="chatContainer"></div>
+            <div id="inputContainer">
+                <input type="text" id="messageInput" placeholder="Type a message...">
+                <button id="sendButton">Send</button>
+            </div>
+        </div>
+        </body>
+        </html>
